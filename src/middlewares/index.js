@@ -1,6 +1,4 @@
-import errorHandler from "./errorHandler.js";
-import validateLength from "./validateLength.js";
-import validateNumber from "./validateNumber.js";
-import validateString from "./validateString.js";
-
-export { errorHandler, validateLength, validateNumber, validateString };
+export { default as errorHandler } from "./errorHandler.js";
+export { default as validarLargo } from "./validarLargo.js";
+export { default as validarNumero } from "./validarNumero.js";
+export { default as validarString } from "./validarString.js";

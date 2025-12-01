@@ -1,61 +1,51 @@
 class Dao {
-  constructor() {
-    // Datos de ejemplo en memoria
-    this.data = [
-      // {
-      //   id: "AAB001",
-      //   xa: 7500,
-      //   ya: 6200,
-      //   za: 1000,
-      // },
-    ];
-  }
-
-  // GET all
-  getAll = async () => {
-    return this.data;
-  };
-
-  // GET by ID
-  getById = async (id) => {
-    return this.data.find((item) => item.id === id);
-  };
-
-  // POST /create
-  create = async (item) => {
-    this.data.push(item);
-    return item;
-  };
-
-  // PUT /:id
-  update = async (id, newData) => {
-    const index = this.data.findIndex((item) => item.id === id);
-
-    if (index === -1) {
-      return null; // not found → controller envia 404
+    constructor() {
+        this.data = [
+            {
+                id: "A1",
+                latitud: -34.6037,
+                longitud: -58.3816,
+            },
+            {
+                id: "A2",
+                latitud: -34.60365,
+                longitud: -58.38152,
+            },
+            {
+                id: "A3",
+                latitud: -34.60376,
+                longitud: -58.3817,
+            },
+        ];
     }
 
-    this.data[index] = {
-      ...this.data[index],
-      ...newData,
+    getAll = async () => {
+        return this.data;
+    };
+    // POST /corredores
+    recibir = async (item) => {
+        this.data.push(item);
+        return item;
     };
 
-    return this.data[index];
-  };
+    getById = async (id) => {
+        return this.data.find((item) => item.id === id);
+    };
 
-  // DELETE /:id
-  delete = async (id) => {
-    const index = this.data.findIndex((item) => item.id === id);
+    actualizar = async (id, newData) => {
+        const index = this.data.findIndex((item) => item.id === id);
 
-    if (index === -1) {
-      return null; // controller envia 404
-    }
+        if (index === -1) {
+        return null;
+        }
 
-    const deleted = this.data[index];
-    this.data.splice(index, 1);
+        this.data[index] = {
+        ...this.data[index],
+        ...newData,
+        };
 
-    return deleted;
-  };
+        return this.data[index];
+    };
 }
 
 export default Dao;
